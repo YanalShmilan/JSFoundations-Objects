@@ -1,4 +1,4 @@
-const channels = require("./channels.json");
+const channels = require('./channels.json');
 
 /**************************************************************
  * totalVideosDuration(channel):
@@ -8,6 +8,15 @@ const channels = require("./channels.json");
  * BONUS: use iteration method `.reduce()`
  ****************************************************************/
 function totalVideosDuration(channel) {
+  let i = 0;
+  let x = channel.videos.forEach((e) => (i = i + e.duration));
+  return i;
+
+  // Your code here
+}
+function longestName(channel) {
+  let i = channel.name.length;
+  return i;
   // Your code here
 }
 
@@ -20,8 +29,21 @@ function totalVideosDuration(channel) {
  * BONUS: use iteration method `.sort()`
  ****************************************************************/
 function channelWithMostContent(channels) {
-  // Your code here
+  let x = [];
+  channels.forEach((e) => {
+    let dur = totalVideosDuration(e);
+    x.push(dur);
+  });
+  x.sort(function (a, b) {
+    return a - b;
+  });
+  console.log(x);
+  let last = x.pop();
+  long = channels.find((e) => totalVideosDuration(e) === last);
+  return long;
 }
+
+// Your code here
 
 /**************************************************************
  * longestChannelName(channels):
@@ -32,6 +54,18 @@ function channelWithMostContent(channels) {
  ****************************************************************/
 function longestChannelName(channels) {
   // Your code here
+  let x = [];
+  channels.forEach((e) => {
+    let nameLen = longestName(e);
+    x.push(nameLen);
+  });
+  x.sort(function (a, b) {
+    return a - b;
+  });
+  console.log(x);
+  let last = x.pop();
+  long = channels.find((e) => longestName(e) === last);
+  return long;
 }
 
 // Check your answers by running this file and comparing what it logs
